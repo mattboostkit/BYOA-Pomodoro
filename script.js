@@ -9,6 +9,7 @@ const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
 const modeText = document.getElementById('mode-text');
 const toggleModeButton = document.getElementById('toggle-mode');
+const addTimeButton = document.getElementById('add-time');
 
 const WORK_TIME = 25 * 60; // 25 minutes in seconds
 const BREAK_TIME = 5 * 60; // 5 minutes in seconds
@@ -78,10 +79,16 @@ function manualModeSwitch() {
     toggleModeButton.textContent = isWorkTime ? 'Switch to Break' : 'Switch to Work';
 }
 
+function addFiveMinutes() {
+    timeLeft += 5 * 60; // Add 5 minutes (300 seconds)
+    updateDisplay();
+}
+
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 toggleModeButton.addEventListener('click', manualModeSwitch);
+addTimeButton.addEventListener('click', addFiveMinutes);
 
 // Initialize the display
 resetTimer(); 
