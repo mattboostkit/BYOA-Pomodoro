@@ -14,6 +14,11 @@ const addTimeButton = document.getElementById('add-time');
 const WORK_TIME = 25 * 60; // 25 minutes in seconds
 const BREAK_TIME = 5 * 60; // 5 minutes in seconds
 
+// Add these new variables at the top with the other DOM elements
+const focusDisplay = document.createElement('div');
+focusDisplay.id = 'focus-display';
+document.querySelector('.timer-container').insertBefore(focusDisplay, document.querySelector('.timer'));
+
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
@@ -40,6 +45,16 @@ function startTimer() {
         if (timeLeft === undefined) {
             timeLeft = WORK_TIME;
         }
+        
+        // Only prompt for focus task during work sessions
+        if (isWorkTime) {
+            const focusTask = prompt('What are you focusing on this session?');
+            if (focusTask) {
+                focusDisplay.textContent = `Focus: ${focusTask}`;
+                focusDisplay.style.display = 'block';
+            }
+        }
+
         timerId = setInterval(() => {
             timeLeft--;
             updateDisplay();
@@ -67,6 +82,7 @@ function resetTimer() {
     isWorkTime = true;
     timeLeft = WORK_TIME;
     modeText.textContent = 'Work Time';
+    focusDisplay.style.display = 'none'; // Hide focus display on reset
     updateDisplay();
     startButton.disabled = false;
 }
