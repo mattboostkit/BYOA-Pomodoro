@@ -38,7 +38,40 @@ function switchMode() {
     updateDisplay();
 }
 
-function startTimer() {
+function showFocusModal() {
+    return new Promise((resolve) => {
+        const modal = document.getElementById('focus-modal');
+        const input = document.getElementById('focus-input');
+        const submitBtn = document.getElementById('focus-submit');
+        const cancelBtn = document.getElementById('focus-cancel');
+
+        modal.style.display = 'block';
+        input.focus();
+
+        submitBtn.onclick = () => {
+            const value = input.value.trim();
+            if (value) {
+                modal.style.display = 'none';
+                input.value = '';
+                resolve(value);
+            }
+        };
+
+        cancelBtn.onclick = () => {
+            modal.style.display = 'none';
+            input.value = '';
+            resolve(null);
+        };
+
+        input.onkeypress = (e) => {
+            if (e.key === 'Enter' && input.value.trim()) {
+                submitBtn.click();
+            }
+        };
+    });
+}
+
+async function startTimer() {
     if (timerId === null) {
         if (timeLeft === undefined) {
             timeLeft = WORK_TIME;
@@ -46,7 +79,7 @@ function startTimer() {
         
         // Only prompt for focus task during work sessions
         if (isWorkTime) {
-            const focusTask = prompt('What are you focusing on this session?');
+            const focusTask = await showFocusModal();
             if (focusTask) {
                 focusDisplay.textContent = `Focus: ${focusTask}`;
                 focusDisplay.style.display = 'block';
