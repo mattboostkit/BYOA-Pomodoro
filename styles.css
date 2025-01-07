@@ -111,4 +111,12 @@ body {
     display: inline-block;
     text-align: center;
     min-width: 120px;
+}
+
+.controls button#add-time {
+    background-color: #0EA5E9;
+}
+
+.controls button#add-time:hover {
+    background-color: #0284C7;
 } 
