@@ -15,9 +15,7 @@ const WORK_TIME = 25 * 60; // 25 minutes in seconds
 const BREAK_TIME = 5 * 60; // 5 minutes in seconds
 
 // Add these new variables at the top with the other DOM elements
-const focusDisplay = document.createElement('div');
-focusDisplay.id = 'focus-display';
-document.querySelector('.timer-container').insertBefore(focusDisplay, document.querySelector('.timer'));
+const focusDisplay = document.getElementById('focus-display');
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
