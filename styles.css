@@ -1,3 +1,28 @@
+body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+    box-sizing: border-box;
+}
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    max-width: 400px;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 .timer {
     font-size: 6rem;
     font-weight: 700;
@@ -5,9 +30,81 @@
     color: #2d3748;
     font-feature-settings: "tnum";
     letter-spacing: -2px;
+}
+.header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+}
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #2d3748;
+}
+.mode-toggle {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: #0EA5E9;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(14, 165, 233, 0.1);
+}
+.mode-toggle:hover {
+    background-color: #0284C7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+}
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 300px;
+}
+.controls button {
+    flex: 1 1 calc(33% - 1rem);
+    min-width: 90px;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    background-color: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+}
+.controls button:hover {
+    background-color: #4338CA;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+}
+.controls button#reset {
+    background-color: #EF4444;
+}
+.controls button#reset:hover {
+    background-color: #DC2626;
+}
+.mode {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: #64748b;
+    font-weight: 500;
+}
+.controls button#toggle-mode {
+    background-color: #0EA5E9;
+    align-items: center;
+}
+
+.controls button#toggle-mode:hover {
+    background-color: #0284C7;
 }
 
 .timer span {
